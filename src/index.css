@@ -20,5 +20,18 @@ code {
 
 @font-face {
   font-family: "digital-clock-font";
-  src: url("./digital-clock-font.ttf");
+  src: url("./assets/digital-clock-font.ttf");
+}
+
+/* @Cleanup - should be attached to the canvas itself */
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+@media (max-width: 600px) {
+  canvas {
+    display: none;
+  }
 }

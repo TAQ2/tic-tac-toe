@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components/macro";
 
+import BackgroundAnimation from "./randomCircles";
 import Gameboard from "./Gameboard";
 import Scoreboard from "./Scoreboard";
 
@@ -12,13 +13,22 @@ const emptyBoard = Array(9).fill(null);
 const X_TILE = "X";
 
 const AppContainer = styled.div`
-  width: 100vw;
-  height: 100vh;
-  padding-top: 1.5vh;
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  top: 0;
+  margin: auto;
+  width: 100%;
+  max-width: 500px;
+  border-radius: 10px;
+  padding-bottom: 2.5%;
+  justify-content: center;
   user-select: none;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: red;
   ${props => props.hasAppRendered && "visibility: hidden;"}
 `;
 
@@ -33,13 +43,11 @@ const App = () => {
     setHasAppRendered(false);
   }, []);
 
-  // @Cleanup - these two lines aren't intuitive
   const winner = calculateWinner(board);
 
   // setting the state multiple times is fine
   const handleClickTile = tileIndex => () => {
-    // @Incomplete - shouldn't be able to click a tile twice
-    if (winner != null) {
+    if (winner != null || board[tileIndex] != null) {
       return;
     }
 
@@ -68,16 +76,19 @@ const App = () => {
   };
 
   return (
-    <AppContainer hasAppRendered={hasAppRendered}>
-      <Gameboard board={board} onClick={handleClickTile} />
-      <br />
-      <Scoreboard
-        score={score}
-        winner={winner}
-        currentPlayer={currentPlayer}
-        handleResetGame={handleResetGame}
-      />
-    </AppContainer>
+    <div>
+      <BackgroundAnimation />
+      <AppContainer hasAppRendered={hasAppRendered}>
+        <Gameboard board={board} onClick={handleClickTile} />
+        <br />
+        <Scoreboard
+          score={score}
+          winner={winner}
+          currentPlayer={currentPlayer}
+          handleResetGame={handleResetGame}
+        />
+      </AppContainer>
+    </div>
   );
 };
 

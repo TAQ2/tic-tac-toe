@@ -1,4 +1,3 @@
-// @Feature - let user change the tile symbol somehow
 const X_TILE = "X";
 const O_TILE = "O";
 
@@ -25,8 +24,6 @@ export const calculateWinner = board => {
     }
   }
 
-  // check for draw
-  // @Feature - check for draw if there are no winning moves left
   let isDraw = true;
 
   for (let i = 0; i < board.length; i++) {
@@ -42,11 +39,6 @@ export const generateScoreboadMessage = (winner, currentPlayer) => {
   if (winner == null) {
     return currentPlayer + "'s Turn";
   } else {
-    if (winner === "draw") {
-      return "It's a draw!";
-    }
-
-    // @Feature - add flashing animation when someone wins
-    return winner + "  Wins!";
+    return winner === "draw" ? "It's a draw!" : winner + "  Wins!";
   }
 };

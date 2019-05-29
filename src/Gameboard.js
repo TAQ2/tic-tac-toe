@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components/macro";
+import styled, { keyframes } from "styled-components/macro";
 
 const Board = styled.div`
   width: 95%;
@@ -9,17 +9,15 @@ const Board = styled.div`
 
 const BoardContainer = styled.div`
   width: 100%;
-  ${"" /* margin-bottom: 4%; */}
   padding-top: 100%;
   position: relative;
-  background-color: rgba(255, 255, 0, 0.05);
 `;
 
 const TileRow = styled.div`
   display: flex;
   width: 100%;
   height: 33.33%;
-  top: ${props => props.i * 33.33 + "%"};
+  top: ${props => props.i * 33.33}%;
   left: 0;
   bottom: 0;
   right: 0;
@@ -30,21 +28,50 @@ const Tile = styled.div`
   padding: 5%;
   width: 33.33%;
   margin: 3%;
-  background-color: rgba(240, 255, 0, 1);
+  background-color: ${props => props.theme.colours.tileBackground};
   border-radius: 10px;
+`;
+
+const OSVGKeyframes = keyframes`
+to {
+  stroke-dashoffset: 0;
+}`;
+
+const OSVG = styled.svg`
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: ${OSVGKeyframes} 0.7s ease-in forwards;
+`;
+
+const O = () => (
+  <OSVG height="100%" width="100%" viewBox="0 0 100 100">
+    <circle cx="50" cy="50" r="45" stroke="#000" strokeWidth="10" fill="none" />
+  </OSVG>
+);
+
+const XSVGKeyframes = keyframes`
+  to {
+    stroke-dashoffset: 0;
+  }
+`;
+
+const XSVG1 = styled.line`
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: ${XSVGKeyframes} 0.4s ease-in forwards;
+`;
+
+const XSVG2 = styled.line`
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: ${XSVGKeyframes} 0.4s ease-in forwards;
+  animation-delay: 0.2s;
 `;
 
 const X = () => (
   <svg height="100%" width="100%" viewBox="0 0 100 100">
-    <line x1="5" y1="5" x2="95" y2="95" stroke="#000" strokeWidth="10" />
-    <line x1="95" y1="5" x2="5" y2="95" stroke="#000" strokeWidth="10" />
-  </svg>
-);
-
-const O = () => (
-  <svg height="100%" width="100%" viewBox="0 0 100 100">
-    <circle cx="50" cy="50" r="45" stroke="#000" strokeWidth="10" />
-    <circle cx="50" cy="50" r="40" fill="rgba(240, 255, 0, 1)" />
+    <XSVG1 x1="5" y1="5" x2="95" y2="95" stroke="#000" strokeWidth="10" />
+    <XSVG2 x1="95" y1="5" x2="5" y2="95" stroke="#000" strokeWidth="10" />
   </svg>
 );
 

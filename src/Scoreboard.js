@@ -6,14 +6,14 @@ import { generateScoreboadMessage } from "./logic";
 const Board = styled.div`
   width: 90%;
   margin: 0 auto;
-  max-width: 350px;
+  max-width: 425px;
 `;
 
 const ScoreboardContainer = styled.div`
   width: 100%;
   height: ${props => props.containerWidth / 3.4}px;
-  background-color: black;
-  border-radius: 0.5vw;
+  background-color: ${props => props.theme.colours.scoreboardBackground};
+  border-radius: 10px;
   font-family: digital-clock-font;
   color: white;
   display: flex;
@@ -21,14 +21,14 @@ const ScoreboardContainer = styled.div`
   padding: 0 4%;
 `;
 
-// @Feature - transition digit
 const ScoreTile = styled.div`
-  color: #629460;
+  color: ${props => props.theme.colours.scoreFont};
   font-size: ${props => props.containerWidth / 4}px;
-  background-color: rgba(40, 40, 40, 0.4);
+  line-height: ${props => props.containerWidth / 4}px;
   border-radius: 1vw;
   text-align: center;
   width: 15%;
+  justify-content: space-around;
 `;
 
 const scoreboardMessageKeyFrames = keyframes`
@@ -44,20 +44,23 @@ from,
 `;
 
 const ScoreboardMessage = styled.div`
-  font-size: ${props => props.containerWidth / 6.5}px;
+  color: ${props => props.theme.colours.scoreboardMessageBackground};
+  font-size: ${props => props.containerWidth / 8}px;
+  line-height: ${props => props.containerWidth / 8}px;
   animation: ${props => props.winner != null && scoreboardMessageKeyFrames} 1s
     linear infinite;
+  padding-bottom: ${props => props.containerWidth / 100}px;
 `;
 
 const PrimaryButton = styled.button`
   width: 45%;
-  height: ${props => props.containerWidth / 12}px;
+  height: ${props => props.containerWidth / 15}px;
   position: relative;
   background: none;
-  color: aqua;
+  color: ${props => props.theme.colours.primaryButton};
   text-transform: uppercase;
   text-decoration: none;
-  border: 0.2em solid aqua;
+  border: 0.1em solid ${props => props.theme.colours.primaryButton};
   outline: none;
   font-family: digital-clock-font;
   font-size: ${props => props.containerWidth / 20}px;
@@ -66,10 +69,10 @@ const PrimaryButton = styled.button`
     display: block;
     position: absolute;
     width: 10%;
-    background: #222;
-    height: 0.21em;
+    background: black;
+    height: 0.11em;
     right: 20%;
-    top: -0.21em;
+    top: -0.1em;
     transform: skewX(-45deg);
     -webkit-transition: all 0.45s cubic-bezier(0.86, 0, 0.07, 1);
     transition: all 0.45s cubic-bezier(0.86, 0, 0.07, 1);
@@ -79,10 +82,10 @@ const PrimaryButton = styled.button`
     display: block;
     position: absolute;
     width: 10%;
-    background: #222;
-    height: 0.21em;
+    background: black;
+    height: 0.11em;
     left: 20%;
-    bottom: -0.25em;
+    bottom: -0.1em;
     transform: skewX(45deg);
     -webkit-transition: all 0.45 cubic-bezier(0.86, 0, 0.07, 1);
     transition: all 0.45s cubic-bezier(0.86, 0, 0.07, 1);
@@ -95,6 +98,15 @@ const PrimaryButton = styled.button`
       left: 80%;
     }
   }
+`;
+
+const ScoreboardCentre = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-evenly;
+  flex: 1;
 `;
 
 const Scoreboard = props => {
@@ -116,19 +128,9 @@ const Scoreboard = props => {
   return (
     <Board ref={containerRef}>
       <ScoreboardContainer containerWidth={containerWidth}>
-        {/* @Feature - code for two digits */}
         <ScoreTile containerWidth={containerWidth}>{props.score[0]}</ScoreTile>
         {/* @Cleanup - use styled components */}
-        <div
-          style={{
-            alignItems: "center",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            width: "70%",
-            height: "80%"
-          }}
-        >
+        <ScoreboardCentre>
           <ScoreboardMessage
             containerWidth={containerWidth}
             winner={props.winner}
@@ -141,7 +143,7 @@ const Scoreboard = props => {
           >
             {props.winner == null ? "Reset" : "Start"}
           </PrimaryButton>
-        </div>
+        </ScoreboardCentre>
         <ScoreTile containerWidth={containerWidth}>{props.score[1]}</ScoreTile>
       </ScoreboardContainer>
     </Board>
