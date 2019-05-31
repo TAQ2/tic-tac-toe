@@ -30,6 +30,10 @@ const AppContainer = styled.div`
   align-items: center;
   background-color: ${props => props.theme.colours.appBackground};
   ${props => props.hasAppRendered && "visibility: hidden;"}
+
+  @media (max-width: 520px) {
+    border-radius: 0px;
+  }
 `;
 
 const App = () => {
