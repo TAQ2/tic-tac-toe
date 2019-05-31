@@ -1,19 +1,18 @@
-// https://coolors.co/465e96-e78a7c-483f54-d6c18d-7b6287
-
-const primary = "#465E96";
-const secondary = "#E78A7C";
+const primary = "#d8c52e";
+const secondary = "#ea634f";
 const tertiary = "#483F54";
-const quaternary = "#94D68D";
+const quaternary = "#23b314";
 const quinary = "#7B6287";
-const red = "#f00";
+
 export default {
   colours: {
     appBackground: quinary,
     tileBackground: tertiary,
-    tileFont: secondary,
-    scoreboardContainerBackground: quaternary,
+    XTileFont: secondary,
+    OTileFont: quaternary,
+    scoreboardContainerBackground: tertiary,
     scoreboardMessageBackground: primary,
     primaryButton: primary,
-    scoreFont: red
+    scoreFont: primary
   }
 };

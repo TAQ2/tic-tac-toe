@@ -1,6 +1,5 @@
 import React from "react";
 import styled, { keyframes } from "styled-components/macro";
-import theme from "./theme";
 
 const Board = styled.div`
   width: 95%;
@@ -43,18 +42,12 @@ const OSVG = styled.svg`
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
   animation: ${OSVGKeyframes} 0.7s ease-in forwards;
+  stroke: ${props => props.theme.colours.OTileFont};
 `;
 
 const O = () => (
-  <OSVG height="100%" width="100%" viewBox="0 0 100 100">
-    <circle
-      cx="50"
-      cy="50"
-      r="45"
-      stroke={theme.colours.tileFont}
-      strokeWidth="10"
-      fill="none"
-    />
+  <OSVG viewBox="0 0 100 100">
+    <circle cx="50" cy="50" r="45" strokeWidth="10" fill="none" />
   </OSVG>
 );
 
@@ -64,37 +57,25 @@ const XSVGKeyframes = keyframes`
   }
 `;
 
-const XSVG1 = styled.line`
+const XLine1 = styled.line`
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
   animation: ${XSVGKeyframes} 0.4s ease-in forwards;
+  stroke: ${props => props.theme.colours.XTileFont};
 `;
 
-const XSVG2 = styled.line`
+const XLine2 = styled.line`
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
   animation: ${XSVGKeyframes} 0.4s ease-in forwards;
+  stroke: ${props => props.theme.colours.XTileFont};
   animation-delay: 0.2s;
 `;
 
 const X = () => (
-  <svg height="100%" width="100%" viewBox="0 0 100 100">
-    <XSVG1
-      x1="5"
-      y1="5"
-      x2="95"
-      y2="95"
-      stroke={theme.colours.tileFont}
-      strokeWidth="10"
-    />
-    <XSVG2
-      x1="95"
-      y1="5"
-      x2="5"
-      y2="95"
-      stroke={theme.colours.tileFont}
-      strokeWidth="10"
-    />
+  <svg viewBox="0 0 100 100">
+    <XLine1 x1="5" y1="5" x2="95" y2="95" strokeWidth="10" />
+    <XLine2 x1="95" y1="5" x2="5" y2="95" strokeWidth="10" />
   </svg>
 );
 
