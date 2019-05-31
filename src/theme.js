@@ -5,6 +5,7 @@ const secondary = "#E78A7C";
 const tertiary = "#483F54";
 const quaternary = "#94D68D";
 const quinary = "#7B6287";
+const red = "#f00";
 export default {
   colours: {
     appBackground: quinary,
@@ -13,6 +14,6 @@ export default {
     scoreboardContainerBackground: quaternary,
     scoreboardMessageBackground: primary,
     primaryButton: primary,
-    scoreFont: primary
+    scoreFont: red
   }
 };

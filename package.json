@@ -1,5 +1,6 @@
 {
-  "name": "tic-tac-toe-hooks",
+  "homepage": "https://taq2.github.io/tic-tac-toe/",
+  "name": "tic-tac-toe",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -21,7 +22,6 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "homepage": "https://taq2.github.io/tic-tac-toe",
   "browserslist": {
     "production": [
       ">0.2%",
