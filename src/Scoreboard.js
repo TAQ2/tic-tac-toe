@@ -12,7 +12,8 @@ const Board = styled.div`
 const ScoreboardContainer = styled.div`
   width: 100%;
   height: ${props => props.containerWidth / 3.4}px;
-  background-color: ${props => props.theme.colours.scoreboardBackground};
+  background-color: ${props =>
+    props.theme.colours.scoreboardContainerBackground};
   border-radius: 10px;
   font-family: digital-clock-font;
   color: white;
@@ -69,7 +70,7 @@ const PrimaryButton = styled.button`
     display: block;
     position: absolute;
     width: 10%;
-    background: black;
+    background: ${props => props.theme.colours.scoreboardContainerBackground};
     height: 0.11em;
     right: 20%;
     top: -0.1em;
@@ -82,7 +83,7 @@ const PrimaryButton = styled.button`
     display: block;
     position: absolute;
     width: 10%;
-    background: black;
+    background: ${props => props.theme.colours.scoreboardContainerBackground};
     height: 0.11em;
     left: 20%;
     bottom: -0.1em;

@@ -28,7 +28,7 @@ const AppContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: red;
+  background-color: ${props => props.theme.colours.appBackground};
   ${props => props.hasAppRendered && "visibility: hidden;"}
 `;
 

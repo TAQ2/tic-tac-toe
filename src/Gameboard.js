@@ -1,5 +1,6 @@
 import React from "react";
 import styled, { keyframes } from "styled-components/macro";
+import theme from "./theme";
 
 const Board = styled.div`
   width: 95%;
@@ -29,6 +30,7 @@ const Tile = styled.div`
   width: 33.33%;
   margin: 3%;
   background-color: ${props => props.theme.colours.tileBackground};
+  color: ${props => props.theme.colours.tileFont};
   border-radius: 10px;
 `;
 
@@ -45,7 +47,14 @@ const OSVG = styled.svg`
 
 const O = () => (
   <OSVG height="100%" width="100%" viewBox="0 0 100 100">
-    <circle cx="50" cy="50" r="45" stroke="#000" strokeWidth="10" fill="none" />
+    <circle
+      cx="50"
+      cy="50"
+      r="45"
+      stroke={theme.colours.tileFont}
+      strokeWidth="10"
+      fill="none"
+    />
   </OSVG>
 );
 
@@ -70,8 +79,22 @@ const XSVG2 = styled.line`
 
 const X = () => (
   <svg height="100%" width="100%" viewBox="0 0 100 100">
-    <XSVG1 x1="5" y1="5" x2="95" y2="95" stroke="#000" strokeWidth="10" />
-    <XSVG2 x1="95" y1="5" x2="5" y2="95" stroke="#000" strokeWidth="10" />
+    <XSVG1
+      x1="5"
+      y1="5"
+      x2="95"
+      y2="95"
+      stroke={theme.colours.tileFont}
+      strokeWidth="10"
+    />
+    <XSVG2
+      x1="95"
+      y1="5"
+      x2="5"
+      y2="95"
+      stroke={theme.colours.tileFont}
+      strokeWidth="10"
+    />
   </svg>
 );
 
